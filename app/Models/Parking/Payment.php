@@ -2,9 +2,10 @@
 
 namespace App\Models\Parking;
 
-use App\Models\System\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
+use App\Models\System\User;
 
 class Payment extends Model
 {
