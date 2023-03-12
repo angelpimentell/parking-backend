@@ -10,7 +10,7 @@ class Ticket extends Model
     use HasFactory;
 
     /**
-     * Get the payment associated with the ticker.
+     * Get the payment associated with the ticket.
      */
     public function ticketPlan(): HasOne
     {
@@ -18,7 +18,7 @@ class Ticket extends Model
     }
 
     /**
-     * Get the parking space associated with the ticker.
+     * Get the parking space associated with the ticket.
      */
     public function parkingSpace(): HasOne
     {
@@ -26,7 +26,7 @@ class Ticket extends Model
     }
 
     /**
-     * Get the payment that owns the ticker.
+     * Get the payment that owns the ticket.
      */
     public function payment(): BelongsTo
     {

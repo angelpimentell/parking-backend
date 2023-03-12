@@ -10,7 +10,7 @@ class ParkingSpace extends Model
     use HasFactory;
 
     /**
-     * Get the payment associated with the ticker.
+     * Get the payment associated with the ticket.
      */
     public function parkingLevel(): HasOne
     {
