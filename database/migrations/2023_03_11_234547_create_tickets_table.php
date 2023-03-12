@@ -1,13 +1,13 @@
 <?php
 
-use App\Models\Parking\ParkingSpace;
-use App\Models\Parking\TicketPlan;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+use App\Models\Parking\ParkingSpace;
+use App\Models\Parking\TicketPlan;
+
+return new class extends Migration {
     /**
      * Run the migrations.
      */
