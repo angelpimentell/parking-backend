@@ -12,6 +12,19 @@ class Payment extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'ticket_id',
+        'cashier_user_id',
+        'amount_paid',
+        'description'
+    ];
+
+
+    /**
      * Get the ticket associated with the payment.
      */
     public function ticket(): HasOne
