@@ -10,6 +10,16 @@ class ParkingLevel extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'description',
+    ];
+
+    /**
      * Get the parking spaces that owns the parking level.
      */
     public function parkingSpaces(): BelongsTo
