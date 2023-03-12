@@ -10,6 +10,17 @@ class ParkingSpace extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'parking_level_id',
+        'name',
+        'description',
+    ];
+
+    /**
      * Get the payment associated with the ticket.
      */
     public function parkingLevel(): HasOne
