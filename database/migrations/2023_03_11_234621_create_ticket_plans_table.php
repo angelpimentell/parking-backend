@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('ticket_plans', function (Blueprint $table) {
             $table->id();
+            $table->decimal('price',9, 4);
+            $table->tinyInteger('hours');
+            $table->decimal('penalty_per_hour',9, 4);
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
