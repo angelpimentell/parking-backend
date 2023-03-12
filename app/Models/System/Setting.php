@@ -12,6 +12,17 @@ class Setting extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'dark_mode',
+    ];
+
+
+    /**
      * Get the user that owns the setting.
      */
     public function user(): BelongsTo
