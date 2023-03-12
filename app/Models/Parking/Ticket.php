@@ -10,6 +10,20 @@ class Ticket extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'ticket_plan_id',
+        'parking_space_id',
+        'name',
+        'active',
+        'expiration_date',
+    ];
+
+
+    /**
      * Get the payment associated with the ticket.
      */
     public function ticketPlan(): HasOne
