@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(Payment::class);
             $table->foreignIdFor(User::class, 'cashier_user_id');
-            $table->decimal('amount', 9, 4);
             $table->decimal('amount_paid', 9, 4);
             $table->decimal('penalty_amount', 9, 4);
             $table->string('description')->nullable();

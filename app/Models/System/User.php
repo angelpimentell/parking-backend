@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Parking\Payment;
+use App\Models\Parking\Ticket;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +44,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the payments that owns the user.
+     */
+    public function payments(): BelongsTo
+    {
+        return $this->belongsTo(Payment::class);
+    }
+
+    /**
+     * Get all of the tickets for the user.
+     */
+    public function tickets(): HasManyThrough
+    {
+        return $this->hasManyThrough(Ticket::class, Payment::class, 'cashier_user_id');
+    }
 }
