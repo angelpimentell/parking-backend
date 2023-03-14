@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Parking;
 
 use App\Http\Controllers\Controller;
+use App\Models\Parking\ParkingLevel;
 use Illuminate\Http\Request;
 
 class ParkingLevelController extends Controller
@@ -12,15 +13,8 @@ class ParkingLevelController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $parkingLevels = ParkingLevel::all();
+        return $parkingLevels;
     }
 
     /**
@@ -28,7 +22,8 @@ class ParkingLevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $parkingLevel = ParkingLevel::create($request->all());
+        return $parkingLevel;
     }
 
     /**
@@ -36,15 +31,8 @@ class ParkingLevelController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        $parkingLevel = ParkingLevel::find($id);
+        return $parkingLevel;
     }
 
     /**
@@ -52,7 +40,8 @@ class ParkingLevelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $parkingLevel = ParkingLevel::find($id)->update($request->all());
+        return $parkingLevel;
     }
 
     /**
