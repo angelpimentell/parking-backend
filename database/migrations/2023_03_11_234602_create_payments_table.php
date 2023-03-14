@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->decimal('penalty_amount', 9, 4);
             $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

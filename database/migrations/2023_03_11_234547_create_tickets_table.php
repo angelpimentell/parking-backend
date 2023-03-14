@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->boolean('active');
             $table->date('expiration_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
