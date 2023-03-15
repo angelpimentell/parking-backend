@@ -13,8 +13,7 @@ class ParkingLevelController extends Controller
      */
     public function index()
     {
-        $parkingLevels = ParkingLevel::all();
-        return $parkingLevels;
+        return ParkingLevel::all();
     }
 
     /**
@@ -22,8 +21,7 @@ class ParkingLevelController extends Controller
      */
     public function store(Request $request)
     {
-        $parkingLevel = ParkingLevel::create($request->all());
-        return $parkingLevel;
+        return ParkingLevel::create($request->all());
     }
 
     /**
@@ -31,8 +29,7 @@ class ParkingLevelController extends Controller
      */
     public function show(string $id)
     {
-        $parkingLevel = ParkingLevel::find($id);
-        return $parkingLevel;
+        return ParkingLevel::find($id);
     }
 
     /**
@@ -40,8 +37,7 @@ class ParkingLevelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $parkingLevel = ParkingLevel::find($id)->update($request->all());
-        return $parkingLevel;
+        return ParkingLevel::find($id)->update($request->all());
     }
 
     /**
@@ -49,6 +45,6 @@ class ParkingLevelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return ParkingLevel::find($id)->delete();
     }
 }
