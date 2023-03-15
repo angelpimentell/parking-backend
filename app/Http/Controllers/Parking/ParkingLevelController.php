@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Parking;
 
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\CrudController;
+use App\Http\Controllers\Controller;
 use App\Models\Parking\ParkingLevel;
 
-class ParkingLevelController extends CrudController
+class ParkingLevelController extends Controller
 {
     /**
      * Display a listing of the resource.
