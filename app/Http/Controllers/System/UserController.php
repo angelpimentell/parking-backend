@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\System;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use App\Models\System\User;
 
 class UserController extends Controller
 {
@@ -12,15 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return User::all();
     }
 
     /**
@@ -28,7 +22,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return User::create($request->all());
     }
 
     /**
@@ -36,15 +30,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return User::find($id);
     }
 
     /**
@@ -52,7 +38,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return User::find($id)->update($request->all());
     }
 
     /**
@@ -60,6 +46,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return User::find($id)->delete();
     }
 }

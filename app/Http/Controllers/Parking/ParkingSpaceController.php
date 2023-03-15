@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Parking;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use App\Models\Parking\ParkingSpace;
 
 class ParkingSpaceController extends Controller
 {
@@ -12,15 +14,7 @@ class ParkingSpaceController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return ParkingSpace::all();
     }
 
     /**
@@ -28,7 +22,7 @@ class ParkingSpaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return ParkingSpace::create($request->all());
     }
 
     /**
@@ -36,15 +30,7 @@ class ParkingSpaceController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return ParkingSpace::find($id);
     }
 
     /**
@@ -52,7 +38,7 @@ class ParkingSpaceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return ParkingSpace::find($id)->update($request->all());
     }
 
     /**
@@ -60,6 +46,6 @@ class ParkingSpaceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return ParkingSpace::find($id)->delete();
     }
 }
