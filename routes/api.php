@@ -9,7 +9,7 @@ use App\Http\Controllers\Parking\TicketController;
 use App\Http\Controllers\Parking\TicketPlanController;
 use App\Http\Controllers\System\SettingController;
 use App\Http\Controllers\System\UserController;
-use App\Models\Parking\Payment;
+use App\Http\Controllers\Parking\PaymentController;
 
 
 /*
@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResources([
     'parking-levels' => ParkingLevelController::class,
     'parking-spaces' => ParkingSpaceController::class,
-    'payments' => Payment::class,
+    'payments' => UserController::class,
     'tickets' => TicketController::class,
     'ticket-plans' => TicketPlanController::class
 ]);
