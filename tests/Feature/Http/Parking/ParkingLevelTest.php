@@ -1,18 +1,24 @@
 <?php
 
-namespace Models\Parking;
+namespace Http\Parking;
 
-use Tests\TestCase;
+use App\Models\Parking\ParkingLevel;
+use Illuminate\Database\Eloquent\Model;
+use Tests\HttpTestCase;
 
-class ParkingLevelTest extends TestCase
+class ParkingLevelTest extends HttpTestCase
 {
     /**
-     * A basic feature test example.
+     * Respective model for endpoint.
+     *
+     * @var Model|null
      */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
+    protected $model = ParkingLevel::class;
 
-        $response->assertStatus(200);
-    }
+    /**
+     * Respective URL for endpoint.
+     *
+     * @var string|null
+     */
+    protected ?string $url = 'parking-levels';
 }
