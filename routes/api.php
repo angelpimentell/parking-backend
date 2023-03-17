@@ -1,8 +1,15 @@
 <?php
 
-use App\Http\Controllers\Parking\ParkingLevelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Parking\ParkingLevelController;
+use App\Http\Controllers\Parking\ParkingSpaceController;
+use App\Http\Controllers\Parking\TicketController;
+use App\Http\Controllers\Parking\TicketPlanController;
+use App\Http\Controllers\System\SettingController;
+use App\Http\Controllers\System\UserController;
+use App\Models\Parking\Payment;
 
 
 /*
@@ -22,5 +29,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResources([
     'parking-levels' => ParkingLevelController::class,
+    'parking-spaces' => ParkingSpaceController::class,
+    'payments' => Payment::class,
+    'tickets' => TicketController::class,
+    'ticket-plans' => TicketPlanController::class
 ]);
 
+Route::apiResources([
+    'settings' => SettingController::class,
+    'users' => UserController::class
+]);
