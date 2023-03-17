@@ -22,7 +22,11 @@ class PaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ticket_id' => 'required|exists:tickets',
+            'user_id' => 'required|exists:users',
+            'amount_paid' => 'required|decimal:4',
+            'penalty_amount' => 'decimal:4',
+            'description' => 'string|max:255',
         ];
     }
 }

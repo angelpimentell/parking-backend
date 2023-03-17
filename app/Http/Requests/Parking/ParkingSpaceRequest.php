@@ -22,7 +22,9 @@ class ParkingSpaceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'parking_level_id' => 'required|exists:parkings_levels',
+            'name' => 'string|max:255|required',
+            'description' => 'string|max:255'
         ];
     }
 }

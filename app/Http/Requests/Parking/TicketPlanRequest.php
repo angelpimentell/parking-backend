@@ -22,7 +22,10 @@ class TicketPlanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'price' => 'required|decimal:4',
+            'hours' => 'digits_between:0,25',
+            'penalty_per_hour' => 'required|decimal:4',
+            'description' => 'string|max:255',
         ];
     }
 }

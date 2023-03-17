@@ -22,7 +22,9 @@ class TicketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ticket_plan_id' => 'required|exists:ticket_plans',
+            'parking_space_id' => 'required|exists:parking_spaces',
+            'active' => 'boolean|required'
         ];
     }
 }

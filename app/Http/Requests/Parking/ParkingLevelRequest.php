@@ -22,7 +22,8 @@ class ParkingLevelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'string|required|max:255',
+            'description' => 'string|max:255'
         ];
     }
 }

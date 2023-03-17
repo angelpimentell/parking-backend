@@ -22,7 +22,8 @@ class SettingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => 'required|exists:users|unique:users',
+            'dark_mode' => 'boolean|required'
         ];
     }
 }
