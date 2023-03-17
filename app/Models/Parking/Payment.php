@@ -18,7 +18,7 @@ class Payment extends Model
      */
     protected $fillable = [
         'ticket_id',
-        'cashier_user_id',
+        'user_id',
         'amount_paid',
         'description'
     ];
@@ -37,7 +37,7 @@ class Payment extends Model
      */
     public function cashier(): HasOne
     {
-        return $this->hasOne(User::class, 'cashier_user_id');
+        return $this->hasOne(User::class);
     }
 
     /**
