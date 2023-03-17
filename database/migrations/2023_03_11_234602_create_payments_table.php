@@ -16,7 +16,7 @@ return new class extends Migration {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Ticket::class);
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class); // cashier user
             $table->decimal('amount_paid', 9, 4);
             $table->decimal('penalty_amount', 9, 4);
             $table->string('description')->nullable();
