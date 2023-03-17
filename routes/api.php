@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResources([
     'parking-levels' => ParkingLevelController::class,
     'parking-spaces' => ParkingSpaceController::class,
-    'payments' => UserController::class,
+    'payments' => PaymentController::class,
     'tickets' => TicketController::class,
     'ticket-plans' => TicketPlanController::class
 ]);
