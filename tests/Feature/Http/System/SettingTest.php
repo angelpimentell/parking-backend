@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\System;
+namespace Http\System;
 
 use Tests\TestCase;
 

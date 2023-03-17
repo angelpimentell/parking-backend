@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Utilities\TestCases;
+namespace Tests;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

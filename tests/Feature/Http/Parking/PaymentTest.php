@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\Parking;
+namespace Http\Parking;
 
 use Tests\TestCase;
 
