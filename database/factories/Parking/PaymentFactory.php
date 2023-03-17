@@ -22,7 +22,7 @@ class PaymentFactory extends Factory
     {
         return [
             'ticket_id' => Ticket::factory(),
-            'cashier_user_id' => User::factory(),
+            'user_id' => User::factory(),
             'amount_paid' => fake()->randomFloat(4),
             'penalty_amount' => fake()->randomFloat(4),
             'description' => fake()->text(),

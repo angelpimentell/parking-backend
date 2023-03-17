@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->unique();
             $table->boolean('dark_mode');
             $table->timestamps();
             $table->softDeletes();

@@ -59,6 +59,6 @@ class User extends Authenticatable
      */
     public function tickets(): HasManyThrough
     {
-        return $this->hasManyThrough(Ticket::class, Payment::class, 'cashier_user_id');
+        return $this->hasManyThrough(Ticket::class, Payment::class);
     }
 }
