@@ -14,11 +14,6 @@ class SettingCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return [
-            'data' => $this->collection,
-            'links' => [
-                'self' => 'link-value',
-            ],
-        ];
+        return parent::toArray($request);
     }
 }
