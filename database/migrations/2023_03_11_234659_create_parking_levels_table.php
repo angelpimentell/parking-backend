@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('parking_levels', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->smallInteger('max_spaces');
             $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
