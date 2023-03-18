@@ -18,7 +18,7 @@ class ParkingLevelFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'max_spaces' => fake()->randomNumber(200),
+            'max_spaces' => fake()->numberBetween(0, 200),
             'description' => fake()->text(),
         ];
     }
