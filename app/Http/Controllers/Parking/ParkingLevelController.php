@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\Parking\ParkingLevel;
+use App\Http\Resources\Parking\ParkingLevelResource;
+use App\Http\Collections\Parking\ParkingLevelCollection;
 
 class ParkingLevelController extends Controller
 {
@@ -14,7 +16,8 @@ class ParkingLevelController extends Controller
      */
     public function index()
     {
-        return ParkingLevel::all();
+        $parkingLevels = ParkingLevel::all();
+        return new ParkingLevelCollection($parkingLevels);
     }
 
     /**
@@ -22,7 +25,8 @@ class ParkingLevelController extends Controller
      */
     public function store(Request $request)
     {
-        return ParkingLevel::create($request->all());
+        $parkingLevel = ParkingLevel::create($request->all());
+        return new ParkingLevelResource($parkingLevel);
     }
 
     /**
@@ -30,7 +34,8 @@ class ParkingLevelController extends Controller
      */
     public function show(string $id)
     {
-        return ParkingLevel::find($id);
+        $parkingLevel = ParkingLevel::find($id);
+        return new ParkingLevelResource($parkingLevel);
     }
 
     /**
@@ -38,7 +43,8 @@ class ParkingLevelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return ParkingLevel::find($id)->update($request->all());
+        $parkingLevel = ParkingLevel::find($id)->update($request->all());
+        return $parkingLevel;
     }
 
     /**
@@ -46,6 +52,7 @@ class ParkingLevelController extends Controller
      */
     public function destroy(string $id)
     {
-        return ParkingLevel::find($id)->delete();
+        $parkingLevel = ParkingLevel::find($id)->delete();
+        return $parkingLevel;
     }
 }
