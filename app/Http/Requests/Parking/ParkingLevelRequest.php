@@ -23,6 +23,7 @@ class ParkingLevelRequest extends FormRequest
     {
         return [
             'name' => 'string|required|max:255',
+            'max_spaces' => 'required|digits:32767',
             'description' => 'string|max:255'
         ];
     }
