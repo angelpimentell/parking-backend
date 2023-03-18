@@ -16,6 +16,7 @@ class ParkingLevel extends Model
      */
     protected $fillable = [
         'name',
+        'max_spaces',
         'description',
     ];
 
