@@ -56,13 +56,13 @@ abstract class HttpTestCase extends TestCase
     public function test_read_entities_by_request()
     {
         // Arrange
-        $this->model::factory(3)->create();
+        $entity = $this->model::factory(3)->create();
 
         // Act
         $response = $this->session->get($this->API_PREFIX . $this->url);
 
         // Assert
-        $this->assertTrue(True);
+        $response->assertJson($entity->toArray());
     }
 
     /**
