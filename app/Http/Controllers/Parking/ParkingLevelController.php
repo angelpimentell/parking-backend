@@ -17,7 +17,7 @@ class ParkingLevelController extends Controller
     public function index()
     {
         $parkingLevels = ParkingLevel::all();
-        return new ParkingLevelCollection($parkingLevels);
+        return new ParkingLevelResource($parkingLevels);
     }
 
     /**
