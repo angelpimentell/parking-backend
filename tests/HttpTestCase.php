@@ -62,7 +62,7 @@ abstract class HttpTestCase extends TestCase
         $response = $this->session->get($this->API_PREFIX . $this->url);
 
         // Assert
-        $response->assertJson($entity->toArray());
+        $response->assertJson(['data' => $entity->toArray()]);
     }
 
     /**
