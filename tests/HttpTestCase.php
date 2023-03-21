@@ -76,9 +76,10 @@ abstract class HttpTestCase extends TestCase
         $entity = $this->model::factory()->create();
 
         // Act
+        $response = $this->session->get($this->API_PREFIX . $this->url);
 
         // Assert
-        $this->assertTrue(True);
+        $response->assertJson(['data' => [$entity->toArray()]]);
     }
 
     /**
@@ -92,9 +93,10 @@ abstract class HttpTestCase extends TestCase
         $entity = $this->model::factory()->create();
 
         // Act
+        $response = $this->session->postJson($this->API_PREFIX . $this->url, $entity->toArray());
 
         // Assert
-        $this->assertTrue(True);
+        $response->assertJson(['data' => [$entity->toArray()]]);
     }
 
     /**
