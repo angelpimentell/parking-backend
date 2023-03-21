@@ -23,6 +23,14 @@ class Ticket extends Model
         'expiration_date',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
 
     /**
      * Get the payment associated with the ticket.

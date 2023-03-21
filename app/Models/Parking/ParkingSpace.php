@@ -22,6 +22,15 @@ class ParkingSpace extends Model
     ];
 
     /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
+
+    /**
      * Get the payment associated with the ticket.
      */
     public function parkingLevel(): HasOne

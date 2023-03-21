@@ -22,6 +22,15 @@ class ParkingLevel extends Model
     ];
 
     /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
+
+    /**
      * Get the parking spaces that owns the parking level.
      */
     public function parkingSpaces(): BelongsTo

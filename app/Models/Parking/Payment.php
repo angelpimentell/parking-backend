@@ -24,6 +24,14 @@ class Payment extends Model
         'description'
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
 
     /**
      * Get the ticket associated with the payment.

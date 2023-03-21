@@ -22,6 +22,14 @@ class Setting extends Model
         'dark_mode',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
 
     /**
      * Get the user that owns the setting.
