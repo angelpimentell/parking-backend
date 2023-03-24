@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\Parking\ParkingSpace;
+use App\Http\Resources\Parking\ParkingSpaceResource;
 
 class ParkingSpaceController extends Controller
 {
@@ -14,7 +15,8 @@ class ParkingSpaceController extends Controller
      */
     public function index()
     {
-        return ParkingSpace::all();
+        $parkingSpaces = ParkingSpace::all();
+        return new ParkingSpaceResource($parkingSpaces);
     }
 
     /**
@@ -22,7 +24,8 @@ class ParkingSpaceController extends Controller
      */
     public function store(Request $request)
     {
-        return ParkingSpace::create($request->all());
+        $parkingSpace = ParkingSpace::create($request->all());
+        return new ParkingSpaceResource($parkingSpace);
     }
 
     /**
@@ -30,7 +33,8 @@ class ParkingSpaceController extends Controller
      */
     public function show(string $id)
     {
-        return ParkingSpace::find($id);
+        $parkingSpace = ParkingSpace::find($id);
+        return new ParkingSpaceResource($parkingSpace);
     }
 
     /**

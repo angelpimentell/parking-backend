@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\Parking\Payment;
+use App\Http\Resources\Parking\PaymentResource;
 
 class PaymentController extends Controller
 {
@@ -14,7 +15,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return Payment::all();
+        $payments = Payment::all();
+        return new PaymentResource($payments);
     }
 
     /**
@@ -22,7 +24,8 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        return Payment::create($request->all());
+        $payment = Payment::create($request->all());
+        return new PaymentResource($payment);
     }
 
     /**
@@ -30,7 +33,8 @@ class PaymentController extends Controller
      */
     public function show(string $id)
     {
-        return Payment::find($id);
+        $payment = Payment::find($id);
+        return new PaymentResource($payment);
     }
 
     /**

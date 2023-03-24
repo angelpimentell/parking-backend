@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\System\Setting;
+use App\Http\Resources\System\SettingResource;
 
 class SettingController extends Controller
 {
@@ -14,7 +15,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return Setting::all();
+        $settings = Setting::all();
+        return new SettingResource($settings);
     }
 
     /**
@@ -22,7 +24,8 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        return Setting::create($request->all());
+        $setting = Setting::create($request->all());
+        return new SettingResource($setting);
     }
 
     /**
@@ -30,7 +33,8 @@ class SettingController extends Controller
      */
     public function show(string $id)
     {
-        return Setting::find($id);
+        $setting = Setting::find($id);
+        return new SettingResource($setting);
     }
 
     /**

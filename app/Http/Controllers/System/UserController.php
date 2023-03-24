@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\System\User;
+use App\Http\Resources\System\UserResource;
 
 class UserController extends Controller
 {
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $users = User::all();
+        return new UserResource($users);
     }
 
     /**
@@ -22,7 +24,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return User::create($request->all());
+        $user = User::create($request->all());
+        return new UserResource($user);
     }
 
     /**
@@ -30,7 +33,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        return User::find($id);
+        $user = User::find($id);
+        return new UserResource($user);
     }
 
     /**

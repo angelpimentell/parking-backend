@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Models\Parking\TicketPlan;
+use App\Http\Resources\Parking\TicketPlanResource;
 
 class TicketPlanController extends Controller
 {
@@ -14,7 +15,8 @@ class TicketPlanController extends Controller
      */
     public function index()
     {
-        return TicketPlan::all();
+        $ticketPlans = TicketPlan::all();
+        return new TicketPlanResource($ticketPlans);
     }
 
     /**
@@ -22,7 +24,8 @@ class TicketPlanController extends Controller
      */
     public function store(Request $request)
     {
-        return TicketPlan::create($request->all());
+        $ticketPlan = TicketPlan::create($request->all());
+        return new TicketPlanResource($ticketPlan);
     }
 
     /**
@@ -30,7 +33,8 @@ class TicketPlanController extends Controller
      */
     public function show(string $id)
     {
-        return TicketPlan::find($id);
+        $ticketPlan = TicketPlan::find($id);
+        return new TicketPlanResource($ticketPlan);
     }
 
     /**
