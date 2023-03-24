@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Parking\ParkingLevel;
 use App\Http\Resources\Parking\ParkingLevelResource;
-use App\Http\Collections\Parking\ParkingLevelCollection;
 
 class ParkingLevelController extends Controller
 {
@@ -43,8 +42,7 @@ class ParkingLevelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $parkingLevel = ParkingLevel::find($id)->update($request->all());
-        return $parkingLevel;
+        return ParkingLevel::find($id)->update($request->all());
     }
 
     /**
@@ -52,7 +50,6 @@ class ParkingLevelController extends Controller
      */
     public function destroy(string $id)
     {
-        $parkingLevel = ParkingLevel::find($id)->delete();
-        return $parkingLevel;
+        return ParkingLevel::find($id)->delete();
     }
 }
