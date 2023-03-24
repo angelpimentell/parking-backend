@@ -20,5 +20,5 @@ class ParkingLevelTest extends HttpTestCase
      *
      * @var string|null
      */
-    protected ?string $url = 'parking-levels';
+    protected ?string $url = 'parking-levels/';
 }
