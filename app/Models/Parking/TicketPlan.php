@@ -4,10 +4,11 @@ namespace App\Models\Parking;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TicketPlan extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,14 @@ class TicketPlan extends Model
         'description',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
 
     /**
      * Get the tickets that owns ticket plan.

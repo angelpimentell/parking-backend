@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\System\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Payment extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +24,14 @@ class Payment extends Model
         'description'
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
+    ];
 
     /**
      * Get the ticket associated with the payment.

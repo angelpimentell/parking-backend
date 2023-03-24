@@ -18,9 +18,10 @@ return new class extends Migration {
             $table->foreignIdFor(Ticket::class);
             $table->foreignIdFor(User::class); // cashier user
             $table->decimal('amount_paid', 9, 4);
-            $table->decimal('penalty_amount', 9, 4);
+            $table->decimal('penalty_amount', 9, 4)->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

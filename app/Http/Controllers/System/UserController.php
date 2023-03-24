@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Parking;
+namespace App\Http\Controllers\System;
 
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use App\Models\Parking\ParkingLevel;
-use App\Http\Resources\Parking\ParkingLevelResource;
+use App\Models\System\User;
+use App\Http\Resources\System\UserResource;
 
-class ParkingLevelController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $parkingLevels = ParkingLevel::all();
-        return new ParkingLevelResource($parkingLevels);
+        $users = User::all();
+        return new UserResource($users);
     }
 
     /**
@@ -24,8 +24,8 @@ class ParkingLevelController extends Controller
      */
     public function store(Request $request)
     {
-        $parkingLevel = ParkingLevel::create($request->all());
-        return new ParkingLevelResource($parkingLevel);
+        $user = User::create($request->all());
+        return new UserResource($user);
     }
 
     /**
@@ -33,8 +33,8 @@ class ParkingLevelController extends Controller
      */
     public function show(string $id)
     {
-        $parkingLevel = ParkingLevel::find($id);
-        return new ParkingLevelResource($parkingLevel);
+        $user = User::find($id);
+        return new UserResource($user);
     }
 
     /**
@@ -42,7 +42,7 @@ class ParkingLevelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return ParkingLevel::find($id)->update($request->all());
+        return User::find($id)->update($request->all());
     }
 
     /**
@@ -50,6 +50,6 @@ class ParkingLevelController extends Controller
      */
     public function destroy(string $id)
     {
-        return ParkingLevel::find($id)->delete();
+        return User::find($id)->delete();
     }
 }

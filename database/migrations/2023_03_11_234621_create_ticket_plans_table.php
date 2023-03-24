@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->decimal('penalty_per_hour', 9, 4);
             $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

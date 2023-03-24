@@ -24,7 +24,6 @@ class PaymentFactory extends Factory
             'ticket_id' => Ticket::factory(),
             'user_id' => User::factory(),
             'amount_paid' => fake()->randomFloat(4),
-            'penalty_amount' => fake()->randomFloat(4),
             'description' => fake()->text(),
         ];
     }

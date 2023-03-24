@@ -4,10 +4,11 @@ namespace App\Models\Parking;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ParkingLevel extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +19,15 @@ class ParkingLevel extends Model
         'name',
         'max_spaces',
         'description',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'deleted_at'
     ];
 
     /**

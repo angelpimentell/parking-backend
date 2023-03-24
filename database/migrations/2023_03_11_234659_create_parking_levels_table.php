@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->smallInteger('max_spaces');
             $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

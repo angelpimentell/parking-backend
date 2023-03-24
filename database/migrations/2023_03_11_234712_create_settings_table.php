@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->foreignIdFor(User::class)->unique();
             $table->boolean('dark_mode');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

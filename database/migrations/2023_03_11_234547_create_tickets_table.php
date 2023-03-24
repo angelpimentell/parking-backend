@@ -19,8 +19,9 @@ return new class extends Migration {
             $table->foreignIdFor(ParkingSpace::class);
             $table->string('name');
             $table->boolean('active');
-            $table->date('expiration_date');
+            $table->dateTime('expiration_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -19,7 +19,7 @@ class TicketPlanFactory extends Factory
         return [
             'price' => fake()->randomFloat(4),
             'hours' => fake()->randomDigitNotNull(),
-            'penalty_per_hour' => fake()->randomFloat(),
+            'penalty_per_hour' => fake()->randomFloat(4),
             'description' => fake()->text(),
         ];
     }

@@ -24,7 +24,7 @@ class TicketFactory extends Factory
             'parking_space_id' => ParkingSpace::factory(),
             'name' => fake()->name(),
             'active' => fake()->boolean(),
-            'expiration_date' => fake()->dateTime(),
+            'expiration_date' => fake()->date(config('constants.datetime_format'))
         ];
     }
 }
