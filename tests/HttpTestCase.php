@@ -76,10 +76,10 @@ abstract class HttpTestCase extends TestCase
         $entity = $this->model::factory()->create();
 
         // Act
-        $response = $this->session->get($this->API_PREFIX . $this->url);
+        $response = $this->session->get($this->API_PREFIX . $this->url . $entity->id);
 
         // Assert
-        $response->assertJson(['data' => [$entity->toArray()]]);
+        $response->assertJson(['data' => $entity->toArray()]);
     }
 
     /**
@@ -90,13 +90,13 @@ abstract class HttpTestCase extends TestCase
     public function test_create_one_entity_by_request()
     {
         // Arrange
-        $entity = $this->model::factory()->create();
+        $entity = $this->model::factory()->make();
 
         // Act
         $response = $this->session->postJson($this->API_PREFIX . $this->url, $entity->toArray());
 
         // Assert
-        $response->assertJson(['data' => [$entity->toArray()]]);
+        $response->assertJson(['data' => $entity->toArray()]);
     }
 
     /**
@@ -108,11 +108,13 @@ abstract class HttpTestCase extends TestCase
     {
         // Arrange
         $entity = $this->model::factory()->create();
+        $entityToEdit = $this->model::factory()->make();
 
         // Act
+        $response = $this->session->putJson($this->API_PREFIX . $this->url . $entity->id, $entityToEdit->toArray());
 
         // Assert
-        $this->assertTrue(True);
+        $response->assertContent('1');
     }
 
     /**
@@ -126,9 +128,10 @@ abstract class HttpTestCase extends TestCase
         $entity = $this->model::factory()->create();
 
         // Act
+        $response = $this->session->delete($this->API_PREFIX . $this->url . $entity->id);
 
         // Assert
-        $this->assertTrue(True);
+        $response->assertContent('1');
     }
 
 }
