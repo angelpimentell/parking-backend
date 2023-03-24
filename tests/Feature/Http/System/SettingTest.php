@@ -2,17 +2,22 @@
 
 namespace Http\System;
 
-use Tests\TestCase;
+use App\Models\System\Setting;
+use Tests\HttpTestCase;
 
-class SettingTest extends TestCase
+class SettingTest extends HttpTestCase
 {
     /**
-     * A basic feature test example.
+     * Respective model for endpoint.
+     *
+     * @var Model|null
      */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
+    protected $model = Setting::class;
 
-        $response->assertStatus(200);
-    }
+    /**
+     * Respective URL for endpoint.
+     *
+     * @var string|null
+     */
+    protected ?string $url = 'settings/';
 }

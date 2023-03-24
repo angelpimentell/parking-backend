@@ -2,17 +2,22 @@
 
 namespace Http\Parking;
 
-use Tests\TestCase;
+use App\Models\Parking\TicketPlan;
+use Tests\HttpTestCase;
 
-class TicketPlanTest extends TestCase
+class TicketPlanTest extends HttpTestCase
 {
     /**
-     * A basic feature test example.
+     * Respective model for endpoint.
+     *
+     * @var Model|null
      */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
+    protected $model = TicketPlan::class;
 
-        $response->assertStatus(200);
-    }
+    /**
+     * Respective URL for endpoint.
+     *
+     * @var string|null
+     */
+    protected ?string $url = 'ticket-plans/';
 }
