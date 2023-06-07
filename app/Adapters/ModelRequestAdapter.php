@@ -5,6 +5,7 @@ namespace App\Adapters;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Builder;
 
 class ModelRequestAdapter
 {
@@ -24,53 +25,61 @@ class ModelRequestAdapter
     protected string $model;
 
     /**
-     * Instance of model
+     * Instance of model.
      *
-     * @var Model|null
+     * @var Builder|Model
      */
-    protected mixed $modelInstance;
+    protected Model|Builder $modelInstance;
 
     /**
-     * Table name of model
+     * Table name of model.
      *
      * @var string
      */
     private string $tableName;
 
     /**
-     * Columns of table
+     * Columns of table.
      *
-     * @var mixed
+     * @var array
      */
-    private mixed $columns;
+    private array $columns;
 
     function __construct(string $model, Request $request)
     {
         $this->model = $model;
         $this->request = $request;
-
         $this->modelInstance = new $this->model;
         $this->tableName = $this->modelInstance->getTable();
+
         $this->columns = Schema::getColumnListing($this->tableName);
 
         $this->find_specific_columns();
     }
 
-    private function get_type_of_table_columns()
+    /**
+     * Get table columns of model with their respective types.
+     *
+     * @return array
+     */
+    private function get_table_columns_with_types(): array
     {
         $fieldTypes = [];
 
-        foreach ($this->columns as $column) {
-            $fieldType = Schema::getColumnType($this->tableName, $column);
-            $fieldTypes[$column] = $fieldType;
-        }
+        foreach ($this->columns as $column)
+            $fieldTypes[$column] = Schema::getColumnType($this->tableName, $column);
 
         return $fieldTypes;
     }
 
-    function find_records_by_request_parameters()
+    /**
+     * Generate builder based on request fields.
+     *
+     * @return Builder|Model
+     */
+    function prepare_records_by_request_parameters(): Builder|Model
     {
-        $tableColumns = $this->get_type_of_table_columns();
+        $tableColumns = $this->get_table_columns_with_types();
 
         $requestData = $this->request->all();
 
@@ -91,7 +100,13 @@ class ModelRequestAdapter
         return $this->modelInstance;
     }
 
-    function find_specific_columns()
+    /**
+     * Generate builder with specifics columns based on
+     * request fields if filter_query is 0.
+     *
+     * @return void
+     */
+    function find_specific_columns(): void
     {
         $filter_query = config('constants.filter_query');
 
