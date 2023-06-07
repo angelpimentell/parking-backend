@@ -17,9 +17,10 @@ class TicketPlanFactory extends Factory
     public function definition(): array
     {
         return [
-            'price' => fake()->randomFloat(4),
+            'name' => fake()->name(),
+            'price' => fake()->randomFloat(4, max: 10000),
             'hours' => fake()->randomDigitNotNull(),
-            'penalty_per_hour' => fake()->randomFloat(4),
+            'penalty_per_hour' => fake()->randomFloat(4, max: 10000),
             'description' => fake()->text(),
         ];
     }
