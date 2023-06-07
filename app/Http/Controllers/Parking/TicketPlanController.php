@@ -5,17 +5,20 @@ namespace App\Http\Controllers\Parking;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use App\Models\Parking\TicketPlan;
 use App\Http\Resources\Parking\TicketPlanResource;
+use App\Models\Parking\TicketPlan;
+use App\Adapters\ModelRequestAdapter;
 
 class TicketPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ticketPlans = TicketPlan::all();
+        $per_page = $request->input('per_page') ?? config('constants.default_pagination');
+        $ticketPlans = (new ModelRequestAdapter(TicketPlan::class, $request))->find_records_by_request_parameters();
+        $ticketPlans = $ticketPlans->paginate($per_page);
         return new TicketPlanResource($ticketPlans);
     }
 
