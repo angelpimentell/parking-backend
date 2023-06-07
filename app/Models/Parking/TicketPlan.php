@@ -16,6 +16,7 @@ class TicketPlan extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'price',
         'hours',
         'penalty_per_hour',
