@@ -17,7 +17,7 @@ class TicketPlanController extends Controller
     public function index(Request $request)
     {
         $per_page = $request->input('per_page') ?? config('constants.default_pagination');
-        $ticketPlans = (new ModelRequestAdapter(TicketPlan::class, $request))->find_records_by_request_parameters();
+        $ticketPlans = (new ModelRequestAdapter(TicketPlan::class, $request))->prepare_records_by_request_parameters();
         $ticketPlans = $ticketPlans->paginate($per_page);
         return new TicketPlanResource($ticketPlans);
     }
