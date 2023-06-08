@@ -79,7 +79,7 @@ class ModelRequestAdapter
      *
      * @return Builder|Model
      */
-    function prepare_records_by_request_parameters(): Builder|Model
+    function prepare_query(): Builder|Model
     {
         $tableColumns = $this->get_table_columns_with_types();
 
@@ -103,8 +103,8 @@ class ModelRequestAdapter
     }
 
     /**
-     * Generate builder with specifics columns based on
-     * request fields if filter_query is 0.
+     * Generate builder to find specifics columns based on
+     * request fields if filter_columns param is 1.
      *
      * @return void
      */
@@ -119,6 +119,22 @@ class ModelRequestAdapter
                 array_intersect($this->columns, $request_keys)
             );
         }
+    }
+
+    /**
+     * Get pages to return in pagination.
+     *
+     * @return int
+     */
+    function get_pagination(): int
+    {
+        $per_page = $this->request->query('per_page') ?? Constants::DEFAULT_PAGINATION;
+
+        if ($per_page > Constants::MAX_PAGINATION) {
+            $per_page = Constants::MAX_PAGINATION;
+        }
+
+        return $per_page;
     }
 
 }
