@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Builder;
 
+use App\Constants;
+
 class ModelRequestAdapter
 {
 
@@ -108,7 +110,7 @@ class ModelRequestAdapter
      */
     function find_specific_columns(): void
     {
-        $filter_query = config('constants.filter_query');
+        $filter_query = Constants::FILTER_QUERY;
 
         if ($this->request->query($filter_query['name']) == $filter_query['trueValue']) {
             $request_keys = array_keys($this->request->all());

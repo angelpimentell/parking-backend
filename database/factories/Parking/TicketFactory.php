@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\Parking\ParkingSpace;
 use App\Models\Parking\TicketPlan;
+use App\Constants;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Parking\Ticket>
@@ -24,7 +25,7 @@ class TicketFactory extends Factory
             'parking_space_id' => ParkingSpace::factory(),
             'name' => fake()->name(),
             'active' => fake()->boolean(),
-            'expiration_date' => fake()->date(config('constants.datetime_format'))
+            'expiration_date' => fake()->date(Constants::DATETIME_FORMAT)
         ];
     }
 }
